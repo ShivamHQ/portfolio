@@ -18,18 +18,18 @@
 
   <style>
     :root {
-      --bg:        #0d0b10;
-      --bg-soft:   #16131b;
-      --card:      #1c1822;
-      --card-hover:#241f2c;
-      --border:    #2c2733;
-      --text:      #ece9f1;
-      --muted:     #a39eae;
-      --faint:     #6f6a79;
-      --accent:    #8e2b51;
-      --accent-2:  #b9446f;
-      --accent-3:  #d96b94;
-      --accent-glow: rgba(185, 68, 111, 0.35);
+      --bg:        #0b1120;
+      --bg-soft:   #0f172a;
+      --card:      #121c30;
+      --card-hover:#172339;
+      --border:    #233047;
+      --text:      #e8edf6;
+      --muted:     #94a3b8;
+      --faint:     #64748b;
+      --accent:    #1d6fa5;
+      --accent-2:  #2f8fc7;
+      --accent-3:  #5fb3e0;
+      --accent-glow: rgba(47, 143, 199, 0.30);
       --radius: 16px;
       --maxw: 1080px;
     }
@@ -54,8 +54,8 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(620px circle at 12% -5%, rgba(142,43,81,0.22), transparent 60%),
-        radial-gradient(700px circle at 92% 8%, rgba(185,68,111,0.14), transparent 55%);
+        radial-gradient(620px circle at 12% -5%, rgba(29,111,165,0.22), transparent 60%),
+        radial-gradient(700px circle at 92% 8%, rgba(47,143,199,0.14), transparent 55%);
       pointer-events: none;
       z-index: 0;
     }
@@ -65,7 +65,7 @@
     h1, h2, h3 { font-family: 'Sora', 'Inter', sans-serif; line-height: 1.15; letter-spacing: -0.02em; }
 
     .gradient-text {
-      background: linear-gradient(105deg, var(--accent-2), var(--accent-3) 55%, #f0a9c4);
+      background: linear-gradient(105deg, var(--accent-2), var(--accent-3) 55%, #9fd4f2);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -75,7 +75,7 @@
     nav {
       position: sticky; top: 0; z-index: 50;
       backdrop-filter: blur(12px);
-      background: rgba(13,11,16,0.72);
+      background: rgba(11,17,32,0.78);
       border-bottom: 1px solid transparent;
       transition: border-color .3s, background .3s;
     }
@@ -94,8 +94,8 @@
     .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: .82rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-      color: var(--accent-3); background: rgba(185,68,111,0.1);
-      border: 1px solid rgba(185,68,111,0.25);
+      color: var(--accent-3); background: rgba(47,143,199,0.1);
+      border: 1px solid rgba(47,143,199,0.25);
       padding: 6px 14px; border-radius: 100px; margin-bottom: 22px;
     }
     .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-3); box-shadow: 0 0 10px var(--accent-3); }
@@ -116,17 +116,16 @@
     .avatar-wrap { position: relative; }
     .avatar {
       width: 220px; height: 220px; border-radius: 50%;
-      background: linear-gradient(160deg, var(--accent), var(--accent-3));
-      display: grid; place-items: center;
-      font-family: 'Sora'; font-weight: 800; font-size: 4.4rem; color: #fff;
+      object-fit: cover; object-position: center top;
+      border: 3px solid var(--border);
       box-shadow: 0 20px 60px -18px var(--accent-glow);
-      position: relative; z-index: 1;
+      position: relative; z-index: 1; display: block;
     }
     .avatar-ring {
-      position: absolute; inset: -14px; border-radius: 50%;
-      border: 1px dashed rgba(185,68,111,0.4); animation: spin 26s linear infinite;
+      position: absolute; inset: -12px; border-radius: 50%;
+      background: conic-gradient(from 140deg, var(--accent), transparent 45%, var(--accent-3) 90%, var(--accent));
+      opacity: .55; filter: blur(1px);
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* quick stats */
     .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
@@ -167,9 +166,13 @@
       background: radial-gradient(circle, var(--accent-glow), transparent 70%); opacity: .5;
     }
     .proj .tag { display: inline-block; font-size: .76rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-      color: var(--accent-3); background: rgba(185,68,111,0.1); border: 1px solid rgba(185,68,111,0.25);
+      color: var(--accent-3); background: rgba(47,143,199,0.1); border: 1px solid rgba(47,143,199,0.25);
       padding: 4px 11px; border-radius: 100px; margin-bottom: 16px; }
-    .proj h3 { font-size: 1.3rem; margin-bottom: 12px; position: relative; }
+    .proj-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; position: relative; }
+    .proj h3 { font-size: 1.3rem; position: relative; }
+    .proj .visit { font-size: .82rem; font-weight: 600; color: var(--accent-3); white-space: nowrap; transition: color .2s, transform .2s; position: relative; }
+    .proj:hover .visit { color: #9fd4f2; }
+    .proj .visit::after { content: " ↗"; }
     .proj ul { list-style: none; position: relative; }
     .proj li { color: var(--muted); font-size: .95rem; padding-left: 20px; position: relative; margin-bottom: 9px; }
     .proj li::before { content: "▸"; position: absolute; left: 0; color: var(--accent-2); }
@@ -180,7 +183,7 @@
       background: linear-gradient(var(--accent), transparent); }
     .job { position: relative; margin-bottom: 38px; }
     .job::before { content: ""; position: absolute; left: -33px; top: 6px; width: 16px; height: 16px;
-      border-radius: 50%; background: var(--bg); border: 3px solid var(--accent-2); box-shadow: 0 0 0 4px rgba(185,68,111,0.12); }
+      border-radius: 50%; background: var(--bg); border: 3px solid var(--accent-2); box-shadow: 0 0 0 4px rgba(47,143,199,0.12); }
     .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 16px; margin-bottom: 4px; }
     .job-head h3 { font-size: 1.18rem; }
     .job-head .company { color: var(--accent-3); font-weight: 600; }
@@ -271,7 +274,7 @@
       <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
-        <a href="#initiatives">AI &amp; Products</a>
+        <a href="#initiatives">Ventures</a>
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
@@ -285,14 +288,14 @@
     <div class="wrap">
       <div class="hero-grid">
         <div class="reveal">
-          <span class="eyebrow"><span class="dot"></span> Available for new opportunities · 30-day notice</span>
-          <h1>Hi, I'm <span class="gradient-text">Shivam Mishra</span></h1>
+          <span class="eyebrow"><span class="dot"></span> Open to senior leadership opportunities</span>
+          <h1><span class="gradient-text">Shivam Mishra</span></h1>
           <p class="role">Senior Manager — Product Analytics &amp; Data Science</p>
           <p class="lead">
-            Product Analytics and Data Science leader with <b>11+ years</b> driving business growth,
-            product innovation, and risk strategy across <b>Google</b>, <b>PayPal</b>, and <b>Oportun</b>.
-            I deliver multimillion-dollar impact through analytics and experimentation — and increasingly
-            leverage AI to independently build products that simplify complex decision-making.
+            Product analytics and data science leader with <b>11+ years</b> of experience shaping business
+            growth, product strategy, and risk management across <b>Google</b>, <b>PayPal</b>, and <b>Oportun</b>.
+            I translate complex data into measurable, multimillion-dollar outcomes — and apply AI and emerging
+            technologies to build products that make difficult decisions simpler.
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="#contact">Get in touch →</a>
@@ -301,7 +304,7 @@
         </div>
         <div class="avatar-wrap reveal">
           <div class="avatar-ring"></div>
-          <div class="avatar" aria-label="Shivam Mishra">SM</div>
+          <img class="avatar" src="profile.jpg" alt="Portrait of Shivam Mishra" width="220" height="220" />
         </div>
       </div>
 
@@ -309,8 +312,8 @@
       <div class="stats">
         <div class="stat reveal"><div class="num gradient-text">11+</div><div class="label">Years of experience</div></div>
         <div class="stat reveal"><div class="num gradient-text">$4M+</div><div class="label">Annual savings delivered</div></div>
-        <div class="stat reveal"><div class="num gradient-text">100%+</div><div class="label">Goal-completion lift</div></div>
-        <div class="stat reveal"><div class="num gradient-text">3</div><div class="label">Global tech leaders</div></div>
+        <div class="stat reveal"><div class="num gradient-text">$20M+</div><div class="label">Revenue products shaped</div></div>
+        <div class="stat reveal"><div class="num gradient-text">3</div><div class="label">Global organizations</div></div>
       </div>
     </div>
   </header>
@@ -320,18 +323,18 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="kicker">About</span>
-        <h2>Turning data into measurable business impact</h2>
-        <p>I sit at the intersection of analytics, product, and risk — building the frameworks, models, and
-           experiments that let teams make better decisions, faster.</p>
+        <h2>Translating data into measurable business impact</h2>
+        <p>I work at the intersection of analytics, product, and risk — designing the frameworks, models,
+           and experiments that enable organizations to make better decisions with greater speed and confidence.</p>
       </div>
       <div class="reveal" style="color:var(--muted); max-width:760px; font-size:1.05rem;">
-        <p>Over the past decade I've established product analytics functions, shaped launch strategies for
-           $20M+ revenue products, and architected risk and abuse-detection systems at global scale. My work
-           combines rigorous data science (SQL, Python, experimentation) with the executive stakeholder
-           management needed to turn insight into action.</p>
-        <p style="margin-top:16px;">Lately I've been channeling that experience into AI-assisted product
-           building — shipping real products like a motorcycle-riding platform and an equity-research
-           decision-support tool, end to end.</p>
+        <p>Across more than a decade, I have established product analytics functions, shaped launch strategies
+           for products generating $20M+ in revenue, and architected risk and abuse-detection systems operating
+           at global scale. My approach combines rigorous data science — SQL, Python, and experimentation — with
+           the executive stakeholder management required to convert insight into action.</p>
+        <p style="margin-top:16px;">More recently, I have applied that foundation to AI-assisted product
+           development, independently building and shipping production products end to end, from initial concept
+           through release.</p>
       </div>
     </div>
   </section>
@@ -363,28 +366,35 @@
   <section id="initiatives">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="kicker">AI &amp; Product Initiatives</span>
-        <h2>Products I've built</h2>
-        <p>Independently conceived and shipped using AI-assisted development workflows.</p>
+        <span class="kicker">Ventures &amp; Independent Work</span>
+        <h2>Products built end to end</h2>
+        <p>Self-directed ventures that demonstrate ownership across product strategy, development, and launch —
+           applying AI and emerging technologies to deliver measurable user value.</p>
       </div>
       <div class="proj-grid">
-        <div class="proj reveal">
-          <span class="tag">Founder &amp; Product Builder</span>
-          <h3>REVKIN</h3>
+        <a class="proj reveal" href="https://shivamhq.github.io/revkin-site/" target="_blank" rel="noopener">
+          <span class="tag">Founder &amp; Product Owner</span>
+          <div class="proj-head">
+            <h3>REVKIN</h3>
+            <span class="visit">Visit site</span>
+          </div>
           <ul>
-            <li>Conceived and launched a motorcycle riding platform on the Google Play Store using AI-assisted development workflows.</li>
-            <li>Managed end-to-end product development: requirements, UX design, feature prioritization, testing, analytics, and release management.</li>
+            <li>Conceived and launched a motorcycle riding platform, published on the Google Play Store.</li>
+            <li>Owned the full product lifecycle — requirements, UX design, feature prioritization, testing, analytics, and release management.</li>
           </ul>
-        </div>
-        <div class="proj reveal">
+        </a>
+        <a class="proj reveal" href="https://shivamishra-stock-analyzer.vercel.app/" target="_blank" rel="noopener">
           <span class="tag">Investment Research Platform</span>
-          <h3>Stock Picker</h3>
+          <div class="proj-head">
+            <h3>Stock Picker</h3>
+            <span class="visit">Visit site</span>
+          </div>
           <ul>
-            <li>Built an AI-assisted equity research platform covering Indian and US markets to combat information overload and improve decision quality.</li>
-            <li>Created structured research workflows, investment checklists, and historical decision tracking for consistency and auditability.</li>
-            <li>Consolidated financial, qualitative, and research inputs into a focused decision-support system for long-term stock analysis.</li>
+            <li>Built an equity research platform covering Indian and US markets, designed to reduce information overload and improve decision quality.</li>
+            <li>Established structured research workflows, investment checklists, and historical decision tracking to ensure consistency and auditability.</li>
+            <li>Consolidated financial, qualitative, and research inputs into a focused decision-support system for long-term analysis.</li>
           </ul>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -394,7 +404,7 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="kicker">Professional Experience</span>
-        <h2>Where I've made an impact</h2>
+        <h2>A track record of measurable impact</h2>
       </div>
       <div class="timeline">
 
@@ -404,10 +414,10 @@
             <span class="job-meta">Oct 2024 – Present · Remote</span>
           </div>
           <ul>
-            <li>Boosted user goal completion 100%+ (30% → 65%) by launching a new predictive savings algorithm.</li>
-            <li>Launched a new feature generating a projected $4M in incremental weekly funds.</li>
-            <li>Slashed manual reporting by 80% by building an automated portfolio analytics framework.</li>
-            <li>Established the Product Analytics function, creating data frameworks that now drive product strategy.</li>
+            <li>Increased user goal completion by 100%+ (30% to 65%) through the launch of a predictive savings algorithm.</li>
+            <li>Delivered a new feature projected to generate $4M in incremental weekly funds.</li>
+            <li>Reduced manual reporting effort by 80% by building an automated portfolio analytics framework.</li>
+            <li>Established the Product Analytics function, creating the data frameworks that now inform product strategy.</li>
           </ul>
         </div>
 
@@ -417,9 +427,9 @@
             <span class="job-meta">Jun 2022 – Oct 2024 · Hyderabad, India</span>
           </div>
           <ul>
-            <li>Managed 500+ global vendor agents, lifting productivity by 15% and quality scores from 93% to over 96%.</li>
-            <li>Cut critical case review time by 65% (12 to &lt;4 hours) by architecting a new lead prioritization framework.</li>
-            <li>Boosted spam identification accuracy to over 97% by optimizing internal abuse detection pipelines.</li>
+            <li>Led 500+ global vendor agents, improving productivity by 15% and raising quality scores from 93% to over 96%.</li>
+            <li>Reduced critical case review time by 65% (from 12 to under 4 hours) by architecting a new lead prioritization framework.</li>
+            <li>Increased spam identification accuracy to over 97% by optimizing internal abuse-detection pipelines.</li>
           </ul>
         </div>
 
@@ -430,10 +440,10 @@
           </div>
           <p class="sub">Previous roles: Senior Analyst (Jun 2019 – Aug 2020), Risk Analyst II (Sep 2017 – Jun 2019)</p>
           <ul>
-            <li>Shaped launch strategy for $20M+ revenue products using predictive financial models.</li>
-            <li>Delivered ~$4M in annual savings by managing credit fraud risk portfolios.</li>
+            <li>Shaped the launch strategy for $20M+ in revenue products using predictive financial models.</li>
+            <li>Delivered approximately $4M in annual savings through the management of credit fraud risk portfolios.</li>
             <li>Improved operational forecast accuracy to over 95% by building and automating new models.</li>
-            <li>Cut manual workload by over 40% by automating fraud monitoring and KPI tracking workflows.</li>
+            <li>Reduced manual workload by over 40% by automating fraud monitoring and KPI tracking workflows.</li>
           </ul>
         </div>
 
@@ -444,8 +454,8 @@
           </div>
           <ul>
             <li>As the sole analyst for the supply chain team, delivered ₹50 lakh+ (~$60,000) in monthly savings by architecting a custom billing audit system.</li>
-            <li>Drove a 12% reduction in 3PL costs, 18% improvement in SLA compliance, and a 7-point NPS lift via real-time performance dashboards.</li>
-            <li>Insights presented directly to the VP of Supply Chain to influence vendor negotiations and logistics strategy.</li>
+            <li>Achieved a 12% reduction in 3PL costs, an 18% improvement in SLA compliance, and a 7-point NPS lift through real-time performance dashboards.</li>
+            <li>Presented insights directly to the VP of Supply Chain to inform vendor negotiations and broader logistics strategy.</li>
           </ul>
         </div>
 
@@ -455,7 +465,7 @@
             <span class="job-meta">May 2015 – Aug 2016 · Chennai, India</span>
           </div>
           <ul>
-            <li>Boosted marketing conversions 5–7% and cut analysis time 45% for a Fortune 500 client through customer segmentation and workflow automation.</li>
+            <li>Improved marketing conversions by 5–7% and reduced analysis time by 45% for a Fortune 500 client through customer segmentation and workflow automation.</li>
           </ul>
         </div>
 
@@ -502,12 +512,12 @@
   <section id="contact">
     <div class="wrap">
       <div class="contact-card reveal">
-        <h2>Let's <span class="gradient-text">work together</span></h2>
-        <p>Open to senior analytics, data science, and product leadership opportunities. Reach out — I usually respond within a day.</p>
+        <h2>Let's <span class="gradient-text">connect</span></h2>
+        <p>I welcome conversations around senior analytics, data science, and product leadership roles. Feel free to reach out directly.</p>
         <div class="contact-links">
           <a class="contact-chip" href="mailto:hello.shivam@zohomail.in"><span class="ico">✉</span> hello.shivam@zohomail.in</a>
           <a class="contact-chip" href="tel:+917200352022"><span class="ico">📞</span> +91 72003 52022</a>
-          <a class="contact-chip" href="https://linkedin.com/in/shivam2020" target="_blank" rel="noopener"><span class="ico">in</span> LinkedIn</a>
+          <a class="contact-chip" href="https://www.linkedin.com/in/shivam2020/" target="_blank" rel="noopener"><span class="ico">in</span> LinkedIn</a>
           <span class="contact-chip"><span class="ico">📍</span> Jaipur, India</span>
         </div>
       </div>
@@ -517,7 +527,7 @@
   <footer>
     <div class="wrap footer-inner">
       <span>© <span id="year"></span> Shivam Mishra. All rights reserved.</span>
-      <span>Built with care · <a href="#top">Back to top ↑</a></span>
+      <span><a href="https://www.linkedin.com/in/shivam2020/" target="_blank" rel="noopener">LinkedIn</a> · <a href="#top">Back to top ↑</a></span>
     </div>
   </footer>
 
