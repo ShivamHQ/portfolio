@@ -31,11 +31,11 @@ python -m http.server 8000
 > The included `.nojekyll` file tells GitHub Pages to skip Jekyll processing and serve files as-is.
 
 ## Résumé download
-The hero has a **Download Résumé** button that links to `resume.pdf` in the repo root.
-To enable it, place your resume PDF in this folder named exactly `resume.pdf`, then commit and push:
+The hero has a **Download Résumé** button that links to `Shivam_Mishra.pdf` in the repo root.
+To enable it, place your resume PDF in this folder named exactly `Shivam_Mishra.pdf`, then commit and push:
 
 ```bash
-git add resume.pdf
+git add Shivam_Mishra.pdf
 git commit -m "Add resume PDF"
 git push
 ```
