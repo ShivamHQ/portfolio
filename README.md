@@ -30,6 +30,16 @@ python -m http.server 8000
 
 > The included `.nojekyll` file tells GitHub Pages to skip Jekyll processing and serve files as-is.
 
+## Résumé download
+The hero has a **Download Résumé** button that links to `resume.pdf` in the repo root.
+To enable it, place your resume PDF in this folder named exactly `resume.pdf`, then commit and push:
+
+```bash
+git add resume.pdf
+git commit -m "Add resume PDF"
+git push
+```
+
 ## Customize
 - All content lives in `index.html`. Edit the relevant section directly.
 - Colors are CSS variables at the top of the `<style>` block (`--accent`, `--bg`, etc.).
